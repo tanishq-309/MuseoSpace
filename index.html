@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MuseoSpace — Virtual Art Exhibition</title>
+    
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <main id="museo-app">
+
+        <section id="lobby" class="page-section active">
+            <h1 class="fade-in-1">MuseoSpace</h1> 
+            <p class="subtitle fade-in-2">A Cinematic Journey Through Art</p> 
+        </header>
+            
+            <div class="intro-content">
+                <p class="fade-in-3">Prepare to explore curated collections from around the world.</p> <button id="start-tour-btn" class="primary-btn fade-in-4">Start the Tour &rarr;</button> <div class="audio-controls fade-in-4"> <button id="music-toggle-btn">🔊 Play Ambient Music</button>
+            <audio id="ambient-music" src="assets/audio/ambient.mp3" loop></audio>
+        </div>
+            </div>
+        </section>
+
+
+        <section id="gallery-walkthrough" class="page-section hidden">
+    <h2>The Gallery Walkthrough</h2>
+    
+    <h3 id="collection-title"></h3> 
+    
+    <div id="collections-container">
+        </div>
+
+    <nav class="gallery-nav">
+        <button id="nav-prev" class="nav-arrow" disabled>&larr; Previous</button>
+        <button id="nav-next" class="nav-arrow">Next &rarr;</button>
+    </nav>
+
+    <div class="finish-tour-container">
+        <button id="finish-tour-btn" class="primary-btn hidden">Finish Tour & Leave Feedback</button>
+    </div>
+</section>
+
+
+        <div id="artwork-focus-modal" class="modal hidden" aria-modal="true" role="dialog">
+            <article id="artwork-details-view" class="modal-content">
+                <button id="close-modal-btn" class="close-btn">&times;</button>
+                <div class="detail-flex-container">
+                    <figure class="artwork-image-container">
+                        <img id="artwork-image" src="" alt="Selected Artwork" loading="lazy">
+                        </figure>
+                    <div class="artwork-info-block">
+                        <h3 id="artwork-title">Title Here</h3>
+                        <p><strong>Artist:</strong> <span id="artwork-artist"></span></p>
+                        <p><strong>Year:</strong> <span id="artwork-year"></span></p>
+                        <p><strong>Medium:</strong> <span id="artwork-medium"></span></p>
+                        <hr>
+                        <h4>Curator Notes</h4>
+                        <p id="artwork-notes"></p>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+
+        <section id="reflection-feedback" class="page-section hidden">
+            <h2>Visitor Reflection & Feedback</h2>
+
+            <form id="feedback-form" novalidate>
+                <div class="form-group">
+                    <label for="visitor-name">Your Name:</label>
+                    <input type="text" id="visitor-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="visitor-email">Your Email:</label>
+                    <input type="email" id="visitor-email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="favorite-artwork">Favorite Artwork ID (Optional):</label>
+                    <input type="text" id="favorite-artwork" placeholder="e.g., 007">
+                </div>
+
+                <div class="form-group">
+                    <label for="visitor-comments">Comments:</label>
+                    <textarea id="visitor-comments" rows="4"></textarea>
+                </div>
+                
+                <button type="submit" class="primary-btn">Submit Feedback</button>
+            </form>
+            
+            <div id="thank-you-message" class="hidden">
+                <h3 id="thank-you-heading">Thank You!</h3>
+                <p id="submitted-feedback-summary"></p>
+            </div>
+
+            <div class="action-links">
+                <button id="feedback-prev-btn" class="secondary-btn">&larr; Back to Gallery</button>
+                <button id="restart-tour-btn" class="secondary-btn">Restart Tour</button>
+                <button id="share-social-link" class="secondary-btn">Share Exhibition</button>
+            </div>
+        </section>
+
+    </main>
+    
+    <script src="scripts/data.js"></script>
+    <script src="scripts/feedback.js"></script>
+    <script src="scripts/animations.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+/* ========================================
+   RESPONSIVE STYLES (Mobile-First)
+   ======================================== */
+
+/* Our 'main.css' is already mobile-first. 
+   These queries will "kick in" as the screen gets *larger*. */
+
+
+/* --- Tablet Screens (e.g., iPads) --- */
+@media (min-width: 768px) {
+
+    h1 {
+        font-size: 4rem; /* Larger title on tablets */
+    }
+
+    #lobby .subtitle {
+        font-size: 1.5rem;
+    }
+
+    #gallery-walkthrough {
+        padding: 4rem 3rem; /* More spacing */
+    }
+
+    /* We already had a media query for the modal, 
+       but you can add more tablet-specific ones here */
+}
+
+
+/* --- Desktop Screens --- */
+@media (min-width: 1024px) {
+
+    h1 {
+        font-size: 5rem; /* Even larger title */
+    }
+
+    #lobby .intro-content p {
+        font-size: 1.25rem;
+    }
+
+    #gallery-walkthrough h2 {
+        font-size: 3rem;
+    }
+
+    /* Give the feedback form a max-width on desktops 
+       so it doesn't look too wide */
+    #feedback-form {
+        max-width: 700px;
+        margin: 0 auto; /* Center the form */
+    }
+
+    .form-group {
+        display: grid;
+        grid-template-columns: 1fr 2fr; /* Labels and inputs side-by-side */
+        gap: 1rem;
+        align-items: center;
+    }
+
+    .form-group label {
+        text-align: right; /* Align labels to the right */
+        margin-bottom: 0;
+    }
+
+    /* Make the modal content even wider on large screens */
+    .modal-content {
+        max-width: 1100px;
+        width: 90%;
+    }
+
+    .artwork-info-block {
+        padding-left: 2rem;
+    }
+}

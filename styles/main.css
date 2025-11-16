@@ -1,0 +1,384 @@
+/* ========================================
+   1. GLOBAL STYLES & CSS VARIABLES
+   ======================================== */
+
+/* Define your color palette and fonts */
+:root {
+    --font-primary: 'Playfair Display', serif; /* For titles */
+    --font-secondary: 'Montserrat', sans-serif; /* For body text */
+    
+    --color-background: #111111;
+    --color-text: #EAEAEA;
+    --color-primary: #FFFFFF;
+    --color-accent: #FFA500;
+    --color-modal-bg: rgba(0, 0, 0, 0.85);
+}
+
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Makes layout calculations easier */
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-secondary);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    line-height: 1.6;
+    overflow-x: hidden;
+    font-weight: 300; /* Use the lighter font weight */
+}
+
+h1, h2, h3 {
+    font-family: var(--font-primary);
+    font-weight: 700; /* Bolder titles */
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+p {
+    margin-bottom: 1.5rem;
+    max-width: 600px;
+}
+
+button, a {
+    font-family: var(--font-secondary);
+    cursor: pointer;
+}
+
+/* ========================================
+   2. KEY UTILITY CLASSES
+   ======================================== */
+
+/* This is the most important class! 
+   Your JS will add/remove this to show/hide sections.
+*/
+.hidden {
+    display: none !important; /* Use !important to ensure it overrides other display rules */
+}
+
+/* This class can be used by JS to mark the currently visible section */
+.page-section.active {
+    display: block;
+}
+
+/* ========================================
+   3. SHARED COMPONENT STYLES
+   ======================================== */
+
+.primary-btn {
+    display: inline-block;
+    background-color: var(--color-primary);
+    color: var(--color-background);
+    padding: 0.75rem 1.5rem;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: transform 0.2s ease-out, background-color 0.2s ease;
+}
+
+.primary-btn:hover {
+    transform: scale(1.05);
+    background-color: var(--color-accent);
+    color: var(--color-background);
+}
+
+.secondary-btn {
+    background: transparent;
+    border: 1px solid var(--color-text);
+    color: var(--color-text);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+}
+
+.secondary-btn:hover {
+    background: var(--color-primary);
+    color: var(--color-background);
+    border-color: var(--color-primary);
+}
+
+/* ========================================
+   4. PAGE 1: LOBBY SECTION
+   ======================================== */
+
+/* This creates the full-screen landing page */
+#lobby {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Make the lobby take up the full viewport height */
+    text-align: center;
+    padding: 2rem;
+    
+    /* This is where you'd add your background animation/visual */
+    /* We'll add the animation itself in 'animations.css' */
+    background: linear-gradient(-45deg, #0a0a0a, #222222, #0a0a0a);
+    background-size: 400% 400%;
+}
+
+#lobby header {
+    margin-bottom: 2rem;
+}
+
+#lobby .subtitle {
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--color-text);
+    margin-bottom: 2rem;
+}
+
+#lobby .intro-content p {
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+}
+
+#lobby .audio-controls {
+    margin-top: 3rem;
+}
+
+#lobby #music-toggle-btn {
+    background: none;
+    border: 1px solid var(--color-text);
+    color: var(--color-text);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+#lobby #music-toggle-btn:hover {
+    opacity: 1;
+}
+
+/* ========================================
+   5. MODAL STYLES (Basic)
+   ======================================== */
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-modal-bg);
+    display: flex; /* Use flex to center the modal content */
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.modal-content {
+    background: var(--color-background);
+    border: 1px solid #333;
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 900px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 2rem;
+    color: var(--color-text);
+    background: none;
+    border: none;
+}
+/* ========================================
+   6. PAGE 2: GALLERY WALKTHROUGH
+   ======================================== */
+
+#gallery-walkthrough {
+    min-height: 100vh;
+    padding: 3rem 2rem; /* Add some spacing */
+}
+
+#gallery-walkthrough h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+#collections-container {
+    display: grid;
+    /* This creates a responsive grid */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto; /* Center the grid */
+}
+
+/* REPLACE your .artwork-item styles with this */
+.artwork-item {
+    background: #222;
+    border-radius: 8px;
+    cursor: pointer;
+    
+    /* This creates the container for the zoom */
+    overflow: hidden; 
+    position: relative; /* Needed for the info box */
+}
+
+.artwork-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+    
+    /* Add transition for the zoom */
+    transition: transform 0.4s ease-out;
+}
+
+.artwork-item-info {
+    padding: 1rem 1.25rem;
+    background: #222; /* Give it a solid background */
+    
+    /* Position it at the bottom */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    
+    /* Slide transition */
+    transform: translateY(0);
+    transition: transform 0.4s ease-out;
+}
+
+/* --- THE NEW HOVER EFFECT --- */
+
+.artwork-item:hover img {
+    /* Zoom the image *in* */
+    transform: scale(1.1);
+}
+
+.artwork-item:hover .artwork-item-info {
+    /* Slide the info box *up* */
+    transform: translateY(-40%); /* Adjust as needed */
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.5);
+}
+
+.artwork-item-info h3 {
+    font-size: 1.2rem;
+    color: var(--color-primary);
+    margin-bottom: 0.25rem;
+}
+
+.artwork-item-info p {
+    font-size: 0.9rem;
+    color: var(--color-text);
+    margin-bottom: 0;
+}
+
+/* Gallery Navigation (from your HTML) */
+.gallery-nav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.nav-arrow {
+    background: transparent;
+    border: 2px solid var(--color-text);
+    color: var(--color-text);
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+}
+
+.nav-arrow:hover:not(:disabled) {
+    background: var(--color-primary);
+    color: var(--color-background);
+}
+
+.nav-arrow:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+
+/* ========================================
+   7. PAGE 3: ARTWORK MODAL STYLING
+   ======================================== */
+
+/* Using the .detail-flex-container from your HTML */
+.detail-flex-container {
+    display: flex;
+    flex-direction: column; /* Stack on mobile first */
+    gap: 1.5rem;
+}
+
+.artwork-image-container {
+    flex: 2; /* Takes up more space */
+}
+
+.artwork-image-container img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 5px;
+    max-height: 70vh; /* Don't let image be too tall */
+}
+
+.artwork-info-block {
+    flex: 1; /* Takes up less space */
+    padding-left: 1rem;
+}
+
+.artwork-info-block h3 {
+    font-size: 2rem;
+    color: var(--color-accent); /* Use accent for the title */
+    margin-bottom: 0.5rem;
+}
+
+.artwork-info-block p {
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+}
+
+.artwork-info-block hr {
+    border: 0;
+    height: 1px;
+    background: #444;
+    margin: 1.5rem 0;
+}
+
+/* This is a (desktop-first) media query for the modal layout */
+@media (min-width: 768px) {
+    .detail-flex-container {
+        flex-direction: row; /* Side-by-side on larger screens */
+    }
+}
+/* ========================================
+   8. GALLERY COLLECTION STYLING
+   ======================================== */
+
+#collection-title {
+    text-align: center;
+    font-size: 1.8rem;
+    color: var(--color-accent); /* Uses your accent color */
+    font-family: var(--font-primary);
+    font-style: italic;
+    margin-bottom: 2.5rem;
+}
+
+.finish-tour-container {
+    text-align: center;
+    margin-top: 2.5rem;
+    padding-bottom: 2rem;
+}
