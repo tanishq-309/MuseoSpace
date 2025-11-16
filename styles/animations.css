@@ -1,15 +1,7 @@
-/* ========================================
-   1. ANIMATION KEYFRAMES
-   ======================================== */
-
-/**
- * Keyframe for fading in new pages.
- * We also add a slight upward "slide" for a smoother effect.
- */
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(15px); /* Start slightly lower */
+        transform: translateY(15px);
     }
     to {
         opacity: 1;
@@ -17,27 +9,17 @@
     }
 }
 
-/**
- * Keyframe for the subtle, slow-moving gradient on the lobby.
- */
 @keyframes animatedGradient {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
-/**
- * Keyframe for fading in the modal's dark overlay.
- */
 @keyframes fadeOverlayIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
 
-/**
- * Keyframe for the modal's content box.
- * It "zooms" in slightly.
- */
 @keyframes scaleContentIn {
     from {
         opacity: 0;
@@ -49,33 +31,16 @@
     }
 }
 
-
-/* ========================================
-   2. APPLYING ANIMATIONS
-   ======================================== */
-
-/**
- * Apply the 'fadeIn' animation to all page sections *except* the lobby.
- * This runs every time the 'hidden' class is removed and they are displayed.
- */
 #gallery-walkthrough,
 #reflection-feedback {
     animation: fadeIn 0.5s ease-out;
 }
 
-/**
- * Apply the animated gradient to the lobby.
- * This overrides the 'fadeIn' and gives the lobby its unique background animation.
- * The background and size are already set in main.css.
- */
 #lobby {
     animation: animatedGradient 20s ease infinite;
 }
 
-/**
- * Apply animations to the modal.
- * We animate the overlay and the content box separately for a cleaner effect.
- */
+
 .modal {
     animation: fadeOverlayIn 0.3s ease-out;
 }
@@ -84,10 +49,6 @@
     animation: scaleContentIn 0.3s ease-out;
 }
 
-/**
- * We can also add back the hover/focus transitions from main.css here
- * to keep all animations in one place.
- */
 .primary-btn, .secondary-btn, .nav-arrow {
     transition: all 0.3s ease;
 }
@@ -95,31 +56,22 @@
 .artwork-item {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-/* Add this to styles/animations.css */
 
-/* --- 3. MODAL & ARTWORK EFFECTS --- */
-/* (You can add a new section title like this) */
-
-/* Base style for the modal image */
 #artwork-image {
-    /* Add a smooth transition for the zoom and filter effects */
     transition: transform 0.3s ease-out, filter 0.3s ease-out;
 }
 
-/* Apply the zoom-on-hover effect */
 #artwork-image:hover {
-    transform: scale(1.05); /* Slightly zooms the image */
-    filter: brightness(1.1); /* Makes the image slightly brighter */
+    transform: scale(1.05);
+    filter: brightness(1.1);
     cursor: zoom-in;
 }
 
-/* --- 4. STAGGERED FADE-IN ANIMATIONS --- */
 .fade-in-1, .fade-in-2, .fade-in-3, .fade-in-4 {
     animation: fadeIn 0.8s ease-out forwards;
-    opacity: 0; /* Start hidden */
+    opacity: 0; 
 }
 
-/* Stagger the delays */
 .fade-in-1 { animation-delay: 0.3s; }
 .fade-in-2 { animation-delay: 0.7s; }
 .fade-in-3 { animation-delay: 1.1s; }
