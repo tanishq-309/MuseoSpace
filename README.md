@@ -44,7 +44,7 @@ You only need a modern web browser.
 
 1.  **Clone the repository:**
     ```sh
-    git clone [https://github.com/your-username/MuseoSpace.git](https://github.com/your-username/MuseoSpace.git)
+    git clone https://github.com/tanishq-309/MuseoSpace.git
     ```
 
 2.  **Navigate to the project folder:**
