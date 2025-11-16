@@ -482,3 +482,29 @@ button, a {
     margin-top: 2rem;
     flex-wrap: wrap; /* Allow buttons to wrap on small screens */
 }
+
+/* Style the new <select> dropdown */
+#feedback-form select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: #333;
+    border: 1px solid #555;
+    border-radius: 5px;
+    color: var(--color-primary);
+    font-family: var(--font-secondary);
+    font-size: 1rem;
+    
+    /* Appearance for the dropdown arrow */
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2020%2020%22%20fill%3D%22%23eaeaea%22%3E%3Cpath%20d%3D%22M9.293%2012.95l-3.5-3.5A1%201%200%20017.207%208h5.586a1%201%200%2001.707%201.45l-3.5%203.5a1%201%200%2001-1.414%200z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1.25em;
+}
+
+#feedback-form select:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(255, 165, 0, 0.2);
+}

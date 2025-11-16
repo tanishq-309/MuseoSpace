@@ -82,15 +82,16 @@
                     <label for="visitor-email">Your Email:</label>
                     <input type="email" id="visitor-email" required>
                 </div>
-                
-                <div class="form-group">
-                    <label for="favorite-artwork">Favorite Artwork ID (Optional):</label>
-                    <input type="text" id="favorite-artwork" placeholder="e.g., 007">
-                </div>
 
                 <div class="form-group">
-                    <label for="visitor-comments">Comments:</label>
-                    <textarea id="visitor-comments" rows="4"></textarea>
+                    <label for="favorite-artwork">Favorite Artwork (Optional):</label>
+                    <select id="favorite-artwork" name="favorite">
+                        <option value="">-- Select an artwork --</option>
+                        </select>
+                </div>
+                <div class="form-group">
+                    <label for="visitor-comments">Comments (Optional):</label>
+                    <textarea id="visitor-comments" name="comments" rows="4"></textarea>
                 </div>
                 
                 <button type="submit" class="primary-btn">Submit Feedback</button>
