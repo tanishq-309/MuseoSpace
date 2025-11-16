@@ -382,3 +382,103 @@ button, a {
     margin-top: 2.5rem;
     padding-bottom: 2rem;
 }
+
+/* ========================================
+   9. PAGE 4: FEEDBACK PAGE STYLING
+   ======================================== */
+
+#reflection-feedback {
+    /* Center the content like the lobby */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 90vh; /* Use min-height to ensure it fills the screen */
+    text-align: center;
+    padding: 3rem 1.5rem;
+}
+
+#reflection-feedback h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+/* --- The Form Card --- */
+#feedback-form {
+    background: #1a1a1a; /* A slightly lighter-dark background */
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 600px; /* Constrain width for a clean look */
+    margin: 0 auto 2rem auto;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* We'll use CSS Grid for a clean form layout */
+.form-group {
+    display: grid;
+    grid-template-columns: 1fr; /* Stacked by default */
+    text-align: left;
+    margin-bottom: 1.5rem;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: var(--color-text);
+}
+
+/* Style all text inputs */
+#feedback-form input[type="text"],
+#feedback-form input[type="email"],
+#feedback-form textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: #333;
+    border: 1px solid #555;
+    border-radius: 5px;
+    color: var(--color-primary);
+    font-family: var(--font-secondary);
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Add a focus state */
+#feedback-form input[type="text"]:focus,
+#feedback-form input[type="email"]:focus,
+#feedback-form textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(255, 165, 0, 0.2); /* Accent color glow */
+}
+
+/* Make textarea non-resizable vertically */
+#feedback-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* --- Thank You Message --- */
+#thank-you-message {
+    background: #1a1a1a;
+    border: 1px solid var(--color-accent); /* Highlight with accent */
+    border-radius: 10px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 600px;
+}
+
+#thank-you-message h3 {
+    color: var(--color-accent); /* Use accent color for the title */
+    font-size: 1.8rem;
+}
+
+/* --- Action Links --- */
+.action-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem; /* Space out the buttons */
+    margin-top: 2rem;
+    flex-wrap: wrap; /* Allow buttons to wrap on small screens */
+}
