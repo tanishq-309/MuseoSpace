@@ -14,24 +14,45 @@ document.addEventListener('DOMContentLoaded', () => {
     // Button controls
     const restartTourBtn = document.getElementById('restart-tour-btn');
     const feedbackPrevBtn = document.getElementById('feedback-prev-btn');
-    const shareBtn = document.getElementById('share-social-link'); // <-- ADDED
+    const shareBtn = document.getElementById('share-social-link');
 
     // Form inputs
     const visitorName = document.getElementById('visitor-name');
     const visitorEmail = document.getElementById('visitor-email');
-    
+    const favoriteArtworkSelect = document.getElementById('favorite-artwork'); // <-- ADDED
+
     // Thank you message parts
     const thankYouHeading = document.getElementById('thank-you-heading');
     const submittedSummary = document.getElementById('submitted-feedback-summary');
 
-    // --- 2. Form Submission Logic ---
+    // --- 2. Populate Favorite Artwork Dropdown --- // <-- NEW SECTION
+    function populateFavoriteArtworkDropdown() {
+        // Check if the select element and the artwork data exist
+        if (favoriteArtworkSelect && typeof artworksData !== 'undefined') {
+            
+            // Loop through artworksData and add an <option> for each
+            artworksData.forEach(artwork => {
+                const option = document.createElement('option');
+                option.value = artwork.title; // Use the title as the value
+                option.textContent = artwork.title; // Use the title as the text
+                favoriteArtworkSelect.appendChild(option);
+            });
+        }
+    }
+    
+    // Call the function right away to build the dropdown
+    populateFavoriteArtworkDropdown();
+
+    // --- 3. Form Submission Logic ---
     if (feedbackForm) {
         feedbackForm.addEventListener('submit', (event) => {
             event.preventDefault(); // Prevent page reload
 
-            // ... (Validation logic is unchanged)
+            // Get trimmed values
             const name = visitorName.value.trim();
             const email = visitorEmail.value.trim();
+
+            // Simple validation
             if (name === '' || email === '') {
                 alert('Please fill out your name and email.');
                 return;
@@ -45,12 +66,13 @@ document.addEventListener('DOMContentLoaded', () => {
             // --- If validation passes ---
             thankYouHeading.textContent = `Thank You, ${name}!`;
             submittedSummary.textContent = "We've received your feedback.";
+
             feedbackForm.classList.add('hidden');
             thankYouMessage.classList.remove('hidden');
         });
     }
 
-    // --- 3. Navigation Button Logic ---
+    // --- 4. Navigation Button Logic ---
 
     // "Back to Gallery" button
     if (feedbackPrevBtn) {
@@ -78,23 +100,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 4. SHARE BUTTON LOGIC --- // <-- NEW SECTION
+    // --- 5. SHARE BUTTON LOGIC ---
     if (shareBtn) {
         shareBtn.addEventListener('click', () => {
-            // Use the modern Navigator.clipboard API
             navigator.clipboard.writeText(window.location.href)
                 .then(() => {
-                    // Success!
                     const originalText = shareBtn.textContent;
                     shareBtn.textContent = 'Link Copied!';
-                    
-                    // Revert text back after 3 seconds
                     setTimeout(() => {
                         shareBtn.textContent = originalText;
                     }, 3000);
                 })
                 .catch(err => {
-                    // Error (e.g., on insecure HTTP)
                     console.error('Failed to copy link: ', err);
                     alert('Could not copy link to clipboard.');
                 });
